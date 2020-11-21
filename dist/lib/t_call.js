@@ -3,12 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports["default"] = void 0;
 
-var _translate_call = require("i18nliner/dist/lib/extractors/translate_call");
+var _translate_call = _interopRequireDefault(require("i18nliner/dist/lib/extractors/translate_call"));
 
-var _translate_call2 = _interopRequireDefault(_translate_call);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 /*
  * hbs-capable version of TranslateCall
@@ -20,22 +19,25 @@ function TCall(sexpr) {
       method = sexpr.string,
       args = this.processArguments(sexpr);
 
-  _translate_call2.default.call(this, line, method, args);
+  _translate_call["default"].call(this, line, method, args);
 }
 
-TCall.prototype = Object.create(_translate_call2.default.prototype);
+TCall.prototype = Object.create(_translate_call["default"].prototype);
 TCall.prototype.constructor = TCall;
 
 TCall.prototype.processArguments = function (sexpr) {
   var args = sexpr.params,
       hash = sexpr.hash,
       result = [];
+
   for (var i = 0, len = args.length; i < len; i++) {
     result.push(this.evaluateExpression(args[i]));
   }
+
   if (hash) {
     result.push(this.processHash(hash.pairs));
   }
+
   return result;
 };
 
@@ -49,9 +51,13 @@ TCall.prototype.processHash = function (pairs) {
   var result = {},
       len = pairs.length,
       i;
+
   for (i = 0; i < len; i++) {
     result[pairs[i][0]] = this.UNSUPPORTED_EXPRESSION;
-  }return result;
+  }
+
+  return result;
 };
 
-exports.default = TCall;
+var _default = TCall;
+exports["default"] = _default;
