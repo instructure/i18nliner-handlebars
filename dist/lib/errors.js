@@ -1,17 +1,19 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports["default"] = void 0;
 
-var _errors = require('i18nliner/dist/lib/errors');
+var _errors = _interopRequireDefault(require("i18nliner/dist/lib/errors"));
 
-var _errors2 = _interopRequireDefault(_errors);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+_errors["default"].register('TBlockNestingError');
 
-_errors2.default.register('TBlockNestingError');
-_errors2.default.register('UnwrappableContentError');
-_errors2.default.register('MultipleSubExpressionsError');
+_errors["default"].register('UnwrappableContentError');
 
-exports.default = _errors2.default;
+_errors["default"].register('MultipleSubExpressionsError');
+
+var _default = _errors["default"];
+exports["default"] = _default;
